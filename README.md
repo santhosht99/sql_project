@@ -3,6 +3,13 @@
 ## Project Overview
 This project involves solving a series of SQL queries using the **Famous Paintings & Museum** dataset. The goal is to explore and analyze data related to paintings and museums, focusing on various aspects such as pricing, availability, and popularity.
 
+## Dataset
+
+The project utilizes the **Famous Paintings & Museum dataset** sourced from Kaggle. You can find the dataset at the following link:
+
+- [Famous Paintings & Museum Dataset on Kaggle](<https://www.kaggle.com/datasets/mexwell/famous-paintings>)
+
+
 ## Dataset Description
 The dataset contains information about:
 - Paintings
