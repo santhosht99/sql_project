@@ -151,3 +151,16 @@ with cte as
 	from cte 
 	where rnk=5;
 ```
+## Conclusion
+
+In this project, I successfully explored and analyzed the **Famous Paintings & Museum dataset** to address various SQL problems. Through a series of queries, I uncovered valuable insights into the relationships between paintings and museums, pricing discrepancies, and the popularity of different artists and canvases.
+
+### Key Findings
+
+- I identified paintings that are not displayed in any museums, as well as museums that lack any paintings.
+- Analysis of pricing revealed numerous instances where the asking price exceeded the regular price, highlighting potential pricing strategies.
+- I discovered the most expensive canvas sizes and the least popular ones, which could inform future inventory decisions for artists and galleries.
+- The project also involved cleaning the dataset by removing duplicates and identifying invalid entries, ensuring the integrity of the data for further analysis.
+
+Overall, this project provided an opportunity to enhance my SQL skills while gaining practical experience in data analysis and database management. The findings could be beneficial for museum curators, art collectors, and analysts in the art industry, aiding in decision-making and strategic planning.
+
