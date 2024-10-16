@@ -21,27 +21,27 @@ The dataset contains information about:
 ## SQL Problems Solved
 The following SQL problems were addressed in this project:
 
-1. **Fetch all the paintings which are not displayed on any museums.**
+1. Fetch all the paintings which are not displayed on any museums.
    ```sql
    SELECT * FROM paintings WHERE museum_id IS NULL;
    
 ```
-2. **Are there museums without any paintings?**
+2. Are there museums without any paintings?
 ```sql
 select * from museum m
 where not exists (select 1 from work w
 where w.museum_id=m.museum_id);
 ``
-3. **How many paintings have an asking price of more than their regular price?**
+3. How many paintings have an asking price of more than their regular price?
 ```sql
 select * from product_size where sale_price > regular_price;
 ```
 
-4.**Identify the paintings whose asking price is less than 50% of its regular price**
+4. Identify the paintings whose asking price is less than 50% of its regular price
 ```sql
 select * from product_size where sale_price < (regular_price * 0.5);
 ```
-5.**Which canva size costs the most?**
+5. Which canva size costs the most?
 ```sql
 select cs.label as canva, ps.sale_price
 	from (select *
@@ -112,7 +112,7 @@ select m.name as museum, m.city,m.country,x.no_of_painintgs
 
 13. Who are the top 5 most popular artist? (Popularity is defined based on most no of
 paintings done by an artist)
-
+``sql
 select a.full_name as artist, a.nationality,x.no_of_painintgs
 	from (	select a.artist_id, count(1) as no_of_painintgs
 			, rank() over(order by count(1) desc) as rnk
@@ -121,10 +121,10 @@ select a.full_name as artist, a.nationality,x.no_of_painintgs
 			group by a.artist_id) x
 	join artist a on a.artist_id=x.artist_id
 	where x.rnk<=5;
-
+```
 
 14. Display the 3 least popular canva sizes
-
+```sql
 select label,ranking,no_of_paintings
 	from (
 		select cs.size_id,cs.label,count(1) as no_of_paintings
@@ -134,9 +134,9 @@ select label,ranking,no_of_paintings
 		join canvas_size cs on cs.size_id::text = ps.size_id
 		group by cs.size_id,cs.label) x
 	where x.ranking<=3;
-
+```
 15. Which country has the 5th highest no of paintings?
-
+```sql
 with cte as 
 		(select m.country, count(1) as no_of_Paintings
 		, rank() over(order by count(1) desc) as rnk
@@ -146,3 +146,4 @@ with cte as
 	select country, no_of_Paintings
 	from cte 
 	where rnk=5;
+```
