@@ -25,7 +25,9 @@ The following SQL problems were addressed in this project:
    ```sql
    SELECT * FROM paintings WHERE museum_id IS NULL;
 ```
-2. Are there museums without any paintings?
+
+2. ** Are there museums without any paintings?**
+
 ```sql
 select * from museum m
 where not exists (select 1 from work w
@@ -65,14 +67,13 @@ select * from museum where city ~ '[0-9]';
 ```sql
 delete from museum_hours 
 	where ctid not in (select min(ctid)
-						from museum_hours
-						group by museum_id, day );
+ 	from museum_hours
+	group by museum_id, day );
 ```
 9. Fetch the top 10 most famous painting subject
 ```sql
 select * 
-	from (
-		select s.subject,count(1) as no_of_paintings
+	from (	select s.subject,count(1) as no_of_paintings
 		,rank() over(order by count(1) desc) as ranking
 		from work w
 		join subject s on s.work_id=w.work_id
