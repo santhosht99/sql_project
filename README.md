@@ -114,9 +114,8 @@ select m.name as museum, m.city,m.country,x.no_of_painintgs
 	where x.rnk<=5;
 ```
 
-### 13. Who are the top 5 most popular artist? (Popularity is defined based on most no of
-paintings done by an artist)
-``sql
+### 13. Who are the top 5 most popular artist? (Popularity is defined based on most no of paintings done by an artist)
+```sql
 select a.full_name as artist, a.nationality,x.no_of_painintgs
 	from (	select a.artist_id, count(1) as no_of_painintgs
 			, rank() over(order by count(1) desc) as rnk
@@ -126,7 +125,6 @@ select a.full_name as artist, a.nationality,x.no_of_painintgs
 	join artist a on a.artist_id=x.artist_id
 	where x.rnk<=5;
 ```
-
 ### 14. Display the 3 least popular canva sizes
 ```sql
 select label,ranking,no_of_paintings
