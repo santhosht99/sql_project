@@ -7,7 +7,7 @@ This project involves solving a series of SQL queries using the **Famous Paintin
 
 The project utilizes the **Famous Paintings & Museum dataset** sourced from Kaggle. You can find the dataset at the following link:
 
-- [Famous Paintings & Museum Dataset on Kaggle](<https://www.kaggle.com/datasets/mexwell/famous-paintings>)
+- [Dataset Link](<https://www.kaggle.com/datasets/mexwell/famous-paintings>)
 
 
 ## Dataset Description
