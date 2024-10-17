@@ -35,13 +35,13 @@ select name as paintings from work where museum_id is null;
 select * from museum m
 where not exists (select 1 from work w
 where w.museum_id=m.museum_id);
-``
+```
 ### 3. How many paintings have an asking price of more than their regular price?
 ```sql
 select * from product_size where sale_price > regular_price;
 ```
 
-### 4. Identify the paintings whose asking price is less than 50% of its regular price
+### 4. Identify the paintings whose asking price is less than 50% of its regular price.
 ```sql
 select * from product_size where sale_price < (regular_price * 0.5);
 ```
@@ -54,14 +54,14 @@ select cs.label as canva, ps.sale_price
 	join canvas_size cs on cs.size_id::text=ps.size_id
 	where ps.rnk=1;	
 ```
-### 6. Delete duplicate records from work table
+### 6. Delete duplicate records from work table.
 ```sql
 select work_id ,count(work_id) from work group by work_id; -- NO DUPLICATE
 
 delete from work where work_id not in (select min(work_id) from work group by work_id); --IF ANY DUPLICATES
 ```
 
-### 7. Identify the museums with invalid city information in the given dataset
+### 7. Identify the museums with invalid city information in the given dataset.
 ```sql
 select * from museum where city ~ '[0-9]';
 ```
@@ -72,7 +72,7 @@ delete from museum_hours
  	from museum_hours
 	group by museum_id, day );
 ```
-### 9. Fetch the top 10 most famous painting subject
+### 9. Fetch the top 10 most famous painting subject.
 ```sql
 select * 
 	from (	select s.subject,count(1) as no_of_paintings
@@ -82,8 +82,7 @@ select *
 		group by s.subject ) x
 	where ranking <= 10;
 ```
-### 10. Identify the museums which are open on both Sunday and Monday. Display
-museum name, city.
+### 10. Identify the museums which are open on both Sunday and Monday. Display museum name, city.
 ```sql
 select distinct m.name as museum_name, m.city, m.state,m.country
 	from museum_hours mh 
@@ -101,8 +100,7 @@ select count(1)
 		  group by museum_id
 		  having count(1) = 7) x;
 ```
-### 12. Which are the top 5 most popular museum? (Popularity is defined based on most
-no of paintings in a museum)
+### 12. Which are the top 5 most popular museum? (Popularity is defined based on most no of paintings in a museum).
 ```sql
 select m.name as museum, m.city,m.country,x.no_of_painintgs
 	from (	select m.museum_id, count(1) as no_of_painintgs
@@ -114,7 +112,7 @@ select m.name as museum, m.city,m.country,x.no_of_painintgs
 	where x.rnk<=5;
 ```
 
-### 13. Who are the top 5 most popular artist? (Popularity is defined based on most no of paintings done by an artist)
+### 13. Who are the top 5 most popular artist? (Popularity is defined based on most no of paintings done by an artist).
 ```sql
 select a.full_name as artist, a.nationality,x.no_of_painintgs
 	from (	select a.artist_id, count(1) as no_of_painintgs
@@ -125,7 +123,7 @@ select a.full_name as artist, a.nationality,x.no_of_painintgs
 	join artist a on a.artist_id=x.artist_id
 	where x.rnk<=5;
 ```
-### 14. Display the 3 least popular canva sizes
+### 14. Display the 3 least popular canva sizes.
 ```sql
 select label,ranking,no_of_paintings
 	from (
